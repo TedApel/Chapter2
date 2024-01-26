@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using UnityEngine;
 
 public class RayShooter : MonoBehaviour
 {
     private Camera cam;
-    RaycastHit hit;
+      RaycastHit hit;
+   
+  
     // Start is called before the first frame update
     void Start()
     {
@@ -20,8 +23,10 @@ public class RayShooter : MonoBehaviour
         int size = 48;
         float posX = cam.pixelWidth/2 - size/4;
         float posY = cam.pixelHeight/2 - size/2;
-        GUI.Label(new Rect(posX, posY+120, size, size), "" + hit.point);
-        GUI.Label(new Rect(posX, posY, size, size), "This Middle");
+       GUI.Label(new Rect(posX, posY+120, size, size), "" + hit.point);
+        GUI.Label(new Rect(posX, posY, size, size), "*");
+       // GUI.Label(new Rect(posX, posY, 5000, 5000), "Hello!");
+        
         
     }
     // Update is called once per frame
@@ -31,6 +36,7 @@ public class RayShooter : MonoBehaviour
             
             Vector3 point = new Vector3(cam.pixelWidth/2, cam.pixelHeight/2, 0);
             Ray ray = cam.ScreenPointToRay(point);
+          
             if (Physics.Raycast(ray, out hit)){
                 GameObject hitObject = hit.transform.gameObject;
                 ReactiveTarget target = hitObject.GetComponent<ReactiveTarget>();
