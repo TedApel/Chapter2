@@ -11,7 +11,7 @@ public class Fireball : MonoBehaviour
 }
 
  // Change the color of the enemy to a random color
-
+// important comment
 
         
 void OnTriggerEnter(Collider other) {
